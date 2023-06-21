@@ -1,5 +1,5 @@
-import { UserAlreadyExistsError } from '@/usecases/errors/user-already-exists-error'
-import { makeRegisterUseCase } from '@/usecases/factories/make-register-use-case'
+import { UserAlreadyExistsError } from '@/usecases/errors/UserAlreadyExistsError'
+import { makeCreateUserUseCase } from '@/usecases/factories/MakeCreateUserUseCase'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
@@ -16,7 +16,7 @@ export async function CreateUserController(
   const { name, email, password } = registerBodySchema.parse(req.body)
 
   try {
-    const registerUseCase = makeRegisterUseCase()
+    const registerUseCase = makeCreateUserUseCase()
 
     await registerUseCase.execute({
       name,
