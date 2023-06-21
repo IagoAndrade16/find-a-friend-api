@@ -1,4 +1,4 @@
-import { UserAlreadyExistsError } from '@/usecases/errors/user-already-exists-error'
+import { UserAlreadyExistsError } from '@/usecases/errors/UserAlreadyExistsError'
 import { makeCreateUserUseCase } from '@/usecases/factories/MakeCreateUserUseCase'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
