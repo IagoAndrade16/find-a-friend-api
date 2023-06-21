@@ -5,13 +5,13 @@ import { PetsRepository } from '../PetsRepository'
 export class InMemoryPetsRepository implements PetsRepository {
   public items: Pet[] = []
 
-  async create(data: Prisma.PetCreateInput) {
+  async create(data: Prisma.PetUncheckedCreateInput) {
     const pet = {
       id: randomUUID(),
       name: data.name,
       city: data.city,
       description: data.description,
-      orgId: data.Org,
+      orgId: data.orgId,
     } as Pet
 
     this.items.push(pet)
