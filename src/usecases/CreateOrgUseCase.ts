@@ -27,8 +27,11 @@ export class CreateOrgUseCase {
 
     const password_hash = await hash(data.password, 6)
     const org = await this.orgsRepository.create({
-      ...data,
+      address: data.address,
+      email: data.email,
+      name: data.name,
       password_hash,
+      phone: data.phone,
     })
 
     return { org }
