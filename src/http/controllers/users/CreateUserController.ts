@@ -3,7 +3,10 @@ import { makeRegisterUseCase } from '@/usecases/factories/make-register-use-case
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
-export async function register(req: FastifyRequest, rep: FastifyReply) {
+export async function CreateUserController(
+  req: FastifyRequest,
+  rep: FastifyReply,
+) {
   const registerBodySchema = z.object({
     name: z.string(),
     email: z.string().email(),
