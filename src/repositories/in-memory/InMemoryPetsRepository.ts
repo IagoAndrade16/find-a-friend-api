@@ -28,4 +28,8 @@ export class InMemoryPetsRepository implements PetsRepository {
 
     return user
   }
+
+  async searchMany(q: string) {
+    return this.items.filter((item) => item.city.includes(q))
+  }
 }
