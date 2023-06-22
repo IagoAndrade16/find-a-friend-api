@@ -29,7 +29,12 @@ export class InMemoryPetsRepository implements PetsRepository {
     return user
   }
 
-  async searchMany(q: string) {
-    return this.items.filter((item) => item.city.includes(q))
+  async searchMany(q: string, city: string) {
+    return this.items.filter(
+      (item) =>
+        item.city.includes(city) ||
+        item.name.includes(q) ||
+        item.description?.includes(q),
+    )
   }
 }

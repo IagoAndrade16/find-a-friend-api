@@ -32,6 +32,7 @@ describe('Search pets use case', () => {
 
     const { pets } = await sut.execute({
       city: 'Barra',
+      q: 'mansa',
     })
 
     expect(pets).toHaveLength(1)
@@ -41,6 +42,7 @@ describe('Search pets use case', () => {
   it('should return empty list if pets not found', async () => {
     const { pets } = await sut.execute({
       city: 'Barra',
+      q: 'q',
     })
 
     expect(pets).toHaveLength(0)

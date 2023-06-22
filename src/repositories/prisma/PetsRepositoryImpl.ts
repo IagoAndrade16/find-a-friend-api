@@ -21,15 +21,21 @@ export class PetsRepositoryImpl implements PetsRepository {
     return pet
   }
 
-  async searchMany(q: string) {
-    const pet = await prisma.pet.findMany({
+  async searchMany(q: string, city: string) {
+    const pets = await prisma.pet.findMany({
       where: {
         city: {
+          contains: city,
+        },
+        name: {
+          contains: q,
+        },
+        description: {
           contains: q,
         },
       },
     })
 
-    return pet
+    return pets
   }
 }

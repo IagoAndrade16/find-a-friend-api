@@ -10,11 +10,18 @@ export async function SearchPetsController(
     q: z.string(),
   })
 
+  console.log(req)
+
+  const searchPetsBodySchema = z.object({
+    city: z.string(),
+  })
+
   const { q } = searchPetsParamsSchema.parse(req.params)
+  const { city } = searchPetsBodySchema.parse(req.body)
 
   const createPetUseCase = makeSearchPetsUseCase()
 
-  const { pets } = await createPetUseCase.execute({ q })
+  const { pets } = await createPetUseCase.execute({ q, city })
 
   return rep.status(200).send({ pets })
 }
